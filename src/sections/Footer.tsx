@@ -15,7 +15,7 @@ const footerLinks = [
   },
   {
     title: 'Contact',
-    href: '#',
+    href: 'https://drive.google.com/file/d/1jO_YhXegFbDrM07x3w_bkhZBFM6UliYo/view',
   }
 ]
 

@@ -13,7 +13,7 @@ export const ContactForm = () => {
         message: "",
     })
 
-    const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const SERVICE_ID = 'service_t4cn2xg';
     const TEMPLATE_ID = 'template_cyzfdgm';
     const PUBLIC_KEY = 'ZHs_871fM5mduIaVX';
 
