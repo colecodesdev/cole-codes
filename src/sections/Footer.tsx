@@ -3,7 +3,7 @@ import ArrowUpRightIcon from '@/assets/icons/arrow-up-right.svg'
 const footerLinks = [
   {
     title: 'Resume',
-    href: '#',
+    href: 'https://drive.google.com/file/d/1jO_YhXegFbDrM07x3w_bkhZBFM6UliYo/view',
   },
     {
     title: 'LinkedIn',
@@ -15,7 +15,7 @@ const footerLinks = [
   },
   {
     title: 'Contact',
-    href: 'https://drive.google.com/file/d/1jO_YhXegFbDrM07x3w_bkhZBFM6UliYo/view',
+    href: '#Contact',
   }
 ]
 
