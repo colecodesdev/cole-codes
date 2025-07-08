@@ -8,8 +8,9 @@ export const ContactForm = () => {
 
     const[formData, setFormData] = useState({
         name: "",
-        email: "",
         company: "",
+        phone: "",
+        email: "",
         message: "",
     })
 
@@ -22,7 +23,7 @@ export const ContactForm = () => {
 
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.currentTarget, PUBLIC_KEY).then((result) => {
             alert("Message Sent");
-            setFormData({name: "", email: "", message: "", company: ""})
+            setFormData({name: "", company: "", phone: "", email: "", message: ""})
         }).catch(() => alert("Oops! Something went wrong. Please try again."))
     }
 
@@ -31,10 +32,13 @@ export const ContactForm = () => {
             <form className='space-y-6' onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-4 py-10 px-10">
                     <div className="flex gap-4">
-                    <input onChange={(e) => setFormData({...formData, name: e.target.value})} value={formData.name} placeholder='Name' type="text" name='name' id='name' required className="w-full bg-white border-white/10 rounded-3xl px-4 py-3 text-gray-950 hover:outline-none focus:outline-none"/>
-                    <input onChange={(e) => setFormData({...formData, email: e.target.value})}  value={formData.email}  placeholder='E-Mail' type="text" name='email' id='email' required className="w-full bg-white border-white/10 rounded-3xl px-4 py-3  text-gray-950 hover:outline-none focus:outline-none"/>
-                    </div>
+                    <input onChange={(e) => setFormData({...formData, name: e.target.value})} value={formData.name} placeholder='Name' type="text" name='name' id='name' required className="w-full bg-white border-white/10 rounded-3xl px-4 py-3 text-gray-950 hover:outline-none focus:outline-none required"/>
                     <input onChange={(e) => setFormData({...formData, company: e.target.value})}  value={formData.company}  placeholder='Company Name' type="text" name='company' id='company' required className="w-full bg-white border-white/10 rounded-3xl px-4 py-3  text-gray-950 hover:outline-none focus:outline-none"/>
+                    </div>
+                    <div className="flex gap-4">
+                     <input onChange={(e) => setFormData({...formData, phone: e.target.value})}  value={formData.phone}  placeholder='E-Mail' type="text" name='phone' id='phone' required className="w-full bg-white border-white/10 rounded-3xl px-4 py-3  text-gray-950 hover:outline-none focus:outline-none required"/>
+                     <input onChange={(e) => setFormData({...formData, email: e.target.value})}  value={formData.email}  placeholder='E-Mail' type="text" name='email' id='email' required className="w-full bg-white border-white/10 rounded-3xl px-4 py-3  text-gray-950 hover:outline-none focus:outline-none required"/>
+                    </div>
                     <textarea onChange={(e) => setFormData({...formData, message: e.target.value})}  value={formData.message}  placeholder='Write me a message!' name='message' rows={5} id='message' required className="w-full bg-white border-white/10 rounded-3xl px-4 py-3 resize-none text-gray-950 hover:outline-none focus:outline-none"/>
                 </div>
                     <div className="flex justify-center items-center">
