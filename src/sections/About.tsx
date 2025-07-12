@@ -27,7 +27,7 @@ import { useRef } from 'react';
 const toolboxItems = [
   {
     title: 'JavaScript',
-    iconType: JavascriptIcon,
+    iconType: ,
   },
   {
     title: 'HTML5',
