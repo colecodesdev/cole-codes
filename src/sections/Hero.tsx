@@ -1,10 +1,10 @@
-import memojiImage from '@/assets/images/memoji-computer.png'
 import myMemojiComputer from '@/assets/images/my-memoji-computer.png'
 import Image from "next/image"
-import ArrowDown from '@/assets/icons/arrow-down.svg'
+import ResumeIcon from '@/assets/icons/resume.svg'
 import grainImage from '@/assets/images/grain.jpg'
 import StarIcon from '@/assets/icons/star.svg'
 import SparkleIcon from '@/assets/icons/sparkle.svg'
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { HeroOrbit } from '@/components/HeroOrbit'
 
 export const HeroSection = () => {
@@ -58,24 +58,24 @@ export const HeroSection = () => {
           <div className='bg-green-500 size-2.5 rounded-full relative'>
             <div className='bg-green-500 absolute rounded-full inset-0 animate-ping-large'></div>
           </div>
-          <div className='text-sm font-medium'>Available for new projects</div>
+          <div className='text-sm font-medium'>Colton Reilly</div>
         </div>
       </div>
-      <div className='max-w-lg mx-auto'>
-      <h1 className='font-serif text-3xl text-center mt-8 tracking-wide md:text-5xl'>Custom Websites That Drive Real Results</h1>
-      <p className='mt-4 text-center text-white/60 md:text-lg'>From strategy to launch, I build websites that reflect your brand and deliver results—no jargon, no clutter, just clean design and strong performance.</p>
+      <div className='max-w-xl mx-auto'>
+      <h1 className='font-serif text-3xl text-center mt-8 tracking-wide md:text-5xl'>Software Engineer: Cloud & AI Solutions</h1>
+      <p className='mt-4 text-center text-white/60 md:text-lg'>I have several years of experience building and maintaining live client systems across multiple platforms while working closely with clients to understand and support their technical needs.</p>
       </div>
       <div className='flex flex-col items-center mt-8 gap-4 justify-center md:flex-row'>
-        <a href="#Projects" className='z-10'>
+        <a href="https://github.com/colecodesdev/" target='_blank' className='z-10'>
         <button className='inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl'>
-          <span className='font-semibold'>Explore My Work</span>
-          <ArrowDown className="size-4" />
+          <FaGithub className="size-4" />
+          <span className='font-semibold'>GitHub</span>
         </button>
         </a>
-        <a href="#Contact" className='z-10'>
+        <a href="https://coltonresume.com/" target='_blank' className='z-10'>
         <button className='inline-flex items-center gap-2 border border-white bg-white text-gray-900 h-12 px-6 rounded-xl'>
-          <span>&#9995;</span>
-          <span className='font-semibold'>Let`&apos;`s Connect</span>
+          <ResumeIcon className="size-4" />
+          <span className='font-semibold'>Resume</span>
         </button>
         </a>
       </div>
