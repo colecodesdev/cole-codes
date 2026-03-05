@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import quinDigitalLandingPage from "@/assets/images/quin-digital-landing-page.png";
-import wildOlives30aLandingPage from "@/assets/images/wild-olives-30a-landing-page.png";
+import wildOlives from "@/assets/images/wild-olives.png";
 import winksLandingPage from "@/assets/images/winks-landing-page.png";
 import linkupLandingPage from "@/assets/images/linkup-landing-page.png";
 
@@ -68,17 +67,17 @@ const portfolioProjects: PortfolioProject[] = [
     results: [
       {
         title:
-          "Production restaurant website integrating reservations and online ordering systems.",
+          "Rebuilt the production restaurant website as a React + Tailwind single-page application deployed on AWS S3 and CloudFront.",
       },
     ],
     more: [
-      "Integrated reservation and online ordering platforms into the customer booking flow.",
-      "Maintained production website during active restaurant operations.",
-      "Implemented menu and catering structure for clarity and search visibility.",
-      "Handled ongoing updates and seasonal promotions without downtime."
+      "Recreated the existing Wix-based site using a reusable React component architecture.",
+      "Implemented responsive layouts, mobile navigation, and client-side routing with React Router.",
+      "Structured the UI around reusable layout primitives and section components for maintainability.",
+      "Deployed the static frontend using AWS S3 and CloudFront for low-cost global delivery."
     ],
-    link: "https://coltonmreilly.wixsite.com/website",
-    image: wildOlives30aLandingPage,
+    link: "https://d6uiwxps2u5ue.cloudfront.net/",
+    image: wildOlives,
   },
 ];
 
