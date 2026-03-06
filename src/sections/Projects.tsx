@@ -6,6 +6,7 @@ import Image from "next/image";
 import wildOlives from "@/assets/images/wild-olives.png";
 import winksLandingPage from "@/assets/images/winks-landing-page.png";
 import linkupLandingPage from "@/assets/images/linkup-landing-page.png";
+import codeChallengeGenerator from "@/assets/images/code-challenge.png";
 
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { Card } from "@/components/Card";
@@ -22,6 +23,25 @@ type PortfolioProject = {
 };
 
 const portfolioProjects: PortfolioProject[] = [
+  {
+    company: "Wild Olives 30A",
+    year: "2024 - 2026",
+    title: "Mediterranean Bistro Restaurant",
+    results: [
+      {
+        title:
+          "Rebuilt the production restaurant website as a React + Tailwind single-page application deployed on AWS S3 and CloudFront.",
+      },
+    ],
+    more: [
+      "Recreated the existing Wix-based site using a reusable React component architecture.",
+      "Implemented responsive layouts, mobile navigation, and client-side routing with React Router.",
+      "Structured the UI around reusable layout primitives and section components for maintainability.",
+      "Deployed the static frontend using AWS S3 and CloudFront for low-cost global delivery.",
+    ],
+    link: "https://d6uiwxps2u5ue.cloudfront.net/",
+    image: wildOlives,
+  },
   {
     company: "LinkUp Solutions",
     year: "2024 - Present",
@@ -42,6 +62,25 @@ const portfolioProjects: PortfolioProject[] = [
     image: linkupLandingPage,
   },
   {
+    company: "Reilly Labs",
+    year: "2026",
+    title: "AI Code Challenge Generator",
+    results: [
+      {
+        title:
+          "Built a full-stack AI application that generates programming challenges using the OpenAI API, with a React frontend and FastAPI backend deployed on AWS.",
+      },
+    ],
+    more: [
+      "Designed and implemented a React + Vite single-page application that allows users to generate programming challenges, answer multiple-choice questions, and review explanations while maintaining a consistent UI structure intended for reuse across future AI tools.",
+      "Developed a FastAPI backend that integrates with the OpenAI API to generate structured coding challenges, performs strict JSON validation on AI responses, and persists challenge data using SQLAlchemy with a SQLite database.",
+      "Deployed the frontend as a static site hosted in Amazon S3 and delivered globally through CloudFront, while routing /api requests to a containerized FastAPI backend running on an EC2 instance.",
+      "Containerized the backend with Docker and implemented a CI/CD pipeline using GitHub Actions with OIDC authentication to automatically build images, push them to Amazon ECR, and redeploy the backend container on EC2.",
+    ],
+    link: "https://d1tsfobuj7g5p2.cloudfront.net/",
+    image: codeChallengeGenerator,
+  },
+  {
     company: "Winks Iron Lot",
     year: "2025 - Present",
     title: "Gym Website & Ecommerce Platform",
@@ -60,25 +99,7 @@ const portfolioProjects: PortfolioProject[] = [
     link: "https://www.winksironlot.net/",
     image: winksLandingPage,
   },
-  {
-    company: "Wild Olives 30A",
-    year: "2024 - 2026",
-    title: "Mediterranean Bistro Restaurant",
-    results: [
-      {
-        title:
-          "Rebuilt the production restaurant website as a React + Tailwind single-page application deployed on AWS S3 and CloudFront.",
-      },
-    ],
-    more: [
-      "Recreated the existing Wix-based site using a reusable React component architecture.",
-      "Implemented responsive layouts, mobile navigation, and client-side routing with React Router.",
-      "Structured the UI around reusable layout primitives and section components for maintainability.",
-      "Deployed the static frontend using AWS S3 and CloudFront for low-cost global delivery.",
-    ],
-    link: "https://d6uiwxps2u5ue.cloudfront.net/",
-    image: wildOlives,
-  },
+  
 ];
 
 const ChevronDownIcon = ({ className }: { className?: string }) => (

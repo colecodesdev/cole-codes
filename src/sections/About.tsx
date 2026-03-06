@@ -23,8 +23,6 @@ import myMemoji from "@/assets/images/my-memoji.png";
 
 import { CardHeader } from "@/components/CardHeader";
 import { ToolboxItems } from "@/components/ToolboxItems";
-import { motion } from "framer-motion";
-import { useRef } from "react";
 
 const toolboxItems = [
   { title: "JavaScript", iconType: JavascriptIcon },
@@ -42,27 +40,24 @@ const toolboxItems = [
   { title: "Node.js", iconType: NodeIcon },
 ];
 
-const hobbies = [
-  { title: "Movies & TV", emoji: "🎥", left: "50%", top: "5%" },
-  { title: "Eating Healthy", emoji: "🥑", left: "35%", top: "40%" },
-  { title: "Computer Games", emoji: "🎮", left: "10%", top: "35%" },
-  { title: "Audio Books", emoji: "🎧", left: "70%", top: "45%" },
-  { title: "Staying Active", emoji: "🏋", left: "5%", top: "65%" },
-  { title: "Drinking Coffee", emoji: "☕", left: "5%", top: "5%" },
-  { title: "Building AI Agents", emoji: "🤖", left: "45%", top: "70%" },
+const principles = [
+  "Problem-first thinking before choosing tools",
+  "Simple, maintainable system architecture",
+  "Cost-aware decisions in cloud environments",
+  "Automation wherever repetitive work exists",
+  "Observability built in from the start",
+  "Fast iteration and continuous refinement",
 ];
 
 export const AboutSection = () => {
-  const constraintRef = useRef(null);
-
   return (
     <section className="py-16 lg:py-28" id="About">
       <div className="container">
-        <SectionHeader eyebrow="About Me" title="More Than Just Code" />
+        <SectionHeader eyebrow="About Me" title="How I Build" />
 
-        <div className="mt-10 flex flex-col gap-8">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
-            <Card className="h-[320px] md:col-span-5 lg:col-span-3">
+        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="flex flex-col gap-8 lg:col-span-2">
+            <Card className="flex-1">
               <CardHeader
                 title="My Toolbox"
                 description="The tools and technologies I use to craft fast, reliable web experiences"
@@ -74,42 +69,16 @@ export const AboutSection = () => {
               />
               <ToolboxItems
                 items={toolboxItems}
-                className="mt-6"
+                className="my-6"
                 itemsWrapperClassName="-translate-x-1/2 animate-move-right [animation-duration:15s]"
               />
             </Card>
-          </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
-            <Card className="h-[320px] p-0 flex flex-col md:col-span-3 lg:col-span-2">
-              <CardHeader
-                title="Beyond the Code"
-                description="Passions and hobbies that keep me inspired outside of web development"
-                className="px-6 py-6"
-              />
-              <div className="relative flex-1" ref={constraintRef}>
-                {hobbies.map((hobby) => (
-                  <motion.div
-                    key={hobby.title}
-                    className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-emerald-300 to-sky-400 rounded-full py-1.5 absolute"
-                    style={{ left: hobby.left, top: hobby.top }}
-                    drag
-                    dragConstraints={constraintRef}
-                  >
-                    <span className="font-medium text-gray-950">
-                      {hobby.title}
-                    </span>
-                    <span>{hobby.emoji}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </Card>
-
-            <Card className="h-[320px] p-0 relative md:col-span-2 lg:col-span-1">
+            <Card className="relative min-h-[280px] flex-1 p-0">
               <Image
                 src={newMapImage}
-                alt="map"
-                className="h-full w-full object-cover object-left-top"
+                alt="Map showing my location"
+                className="absolute inset-0 h-full w-full object-cover object-left-top"
               />
               <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full after:content-[""] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30'>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-20 animate-ping [animation-duration:2s]"></div>
@@ -122,6 +91,29 @@ export const AboutSection = () => {
               </div>
             </Card>
           </div>
+
+          <Card className="flex flex-col lg:h-full">
+            <CardHeader
+              title="Engineering Principles"
+              description="A practical approach focused on clarity, maintainability, and real-world delivery."
+              className="px-6 py-6"
+            />
+            <div className="px-6 pb-6">
+              <div className="grid grid-cols-1 gap-3">
+                {principles.map((principle) => (
+                  <div
+                    key={principle}
+                    className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="size-2 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400" />
+                      <p className="text-sm text-white/90">{principle}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
     </section>
