@@ -106,7 +106,6 @@ export const AboutSection = () => {
                     className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="size-2 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400" />
                       <p className="text-sm text-white/90">{principle}</p>
                     </div>
                   </div>
