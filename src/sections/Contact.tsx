@@ -26,13 +26,13 @@ const initialValues: FormValues = {
 const requiredFields: (keyof FormValues)[] = ["name", "email", "phone", "message"];
 
 const baseControl =
-  "w-full h-12 rounded-xl px-6 bg-white text-gray-950 font-semibold outline-none transition focus:ring-2 focus:ring-emerald-300";
+  "w-full h-12 rounded-xl border border-white/10 bg-white/[0.04] px-6 text-white placeholder:text-white/35 font-medium outline-none transition focus:border-white/20 focus:ring-2 focus:ring-emerald-300/40";
 
 const textareaControl =
-  "w-full rounded-xl px-6 py-4 bg-white text-gray-950 font-semibold outline-none transition resize-none focus:ring-2 focus:ring-emerald-300";
+  "w-full rounded-xl border border-white/10 bg-white/[0.04] px-6 py-4 text-white placeholder:text-white/35 font-medium outline-none transition resize-none focus:border-white/20 focus:ring-2 focus:ring-emerald-300/40";
 
-const errorRing = "ring-2 ring-red-500";
-const labelStyle = "text-white/70 text-sm font-semibold mb-2 inline-flex gap-1";
+const errorRing = "border-red-400/70 ring-2 ring-red-500/20";
+const labelStyle = "mb-2 inline-flex gap-1 text-sm font-semibold text-white/70";
 
 const validate = (v: FormValues): FormErrors => {
   const next: FormErrors = {};
@@ -92,40 +92,40 @@ export const ContactSection = () => {
   const hasError = (field: keyof FormValues) => Boolean(errors[field]);
 
   return (
-    <section id="Contact" className="py-16 lg:py-24 relative z-0">
+    <section id="Contact" className="relative z-0 py-16 lg:py-24">
       <div className="container">
         <SectionHeader eyebrow="Contact Me" title="Get In Touch" />
 
         <div
           className={[
-            "fixed left-1/2 top-24 -translate-x-1/2 z-[9999]",
+            "fixed left-1/2 top-24 z-[9999] -translate-x-1/2",
             toastOpen ? "pointer-events-auto" : "pointer-events-none",
           ].join(" ")}
           aria-live="polite"
         >
           <div
             className={[
-              "rounded-2xl border border-white/15 bg-gray-950/80 backdrop-blur px-5 py-4 shadow-lg",
+              "rounded-2xl border border-white/10 bg-[#161a22]/90 px-5 py-4 shadow-2xl shadow-black/30 backdrop-blur-md",
               "transition-all duration-200",
-              toastOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2",
+              toastOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0",
             ].join(" ")}
           >
             <div className="flex items-start gap-3">
               <div className="mt-0.5 size-2 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400" />
               <div className="min-w-0">
-                <p className="text-white font-semibold">Missing required fields</p>
-                <p className="text-white/70 text-sm mt-1">
+                <p className="font-semibold text-white">Missing required fields</p>
+                <p className="mt-1 text-sm text-white/70">
                   Please complete the fields marked with{" "}
-                  <span className="text-red-400 font-semibold">*</span>.
+                  <span className="font-semibold text-red-400">*</span>.
                 </p>
-                <p className="text-white/60 text-xs mt-2">
+                <p className="mt-2 text-xs text-white/50">
                   {errorCount} issue{errorCount === 1 ? "" : "s"} found
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setToastOpen(false)}
-                className="ml-2 text-white/70 hover:text-white transition cursor-pointer"
+                className="ml-2 cursor-pointer text-white/50 transition hover:text-white"
                 aria-label="Dismiss"
               >
                 ✕
@@ -134,8 +134,8 @@ export const ContactSection = () => {
           </div>
         </div>
 
-        <Card className="mt-10 px-6 py-8 md:px-10 md:py-10 lg:px-12 lg:py-12 relative z-10 after:pointer-events-none">
-          <form className="w-full relative z-10" onSubmit={onSubmit} noValidate>
+        <Card className="relative z-10 mt-10 px-6 py-8 after:pointer-events-none md:px-10 md:py-10 lg:px-12 lg:py-12">
+          <form className="relative z-10 w-full" onSubmit={onSubmit} noValidate>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div>
                 <label className={labelStyle} htmlFor="contact-name">
@@ -147,6 +147,7 @@ export const ContactSection = () => {
                   value={values.name}
                   onChange={(e) => setField("name", e.target.value)}
                   className={[baseControl, hasError("name") ? errorRing : ""].join(" ")}
+                  placeholder="John Doe"
                 />
                 {errors.name ? <p className="mt-2 text-sm text-red-400">{errors.name}</p> : null}
               </div>
@@ -161,6 +162,7 @@ export const ContactSection = () => {
                   value={values.company}
                   onChange={(e) => setField("company", e.target.value)}
                   className={baseControl}
+                  placeholder="Company"
                 />
               </div>
             </div>
@@ -176,6 +178,7 @@ export const ContactSection = () => {
                   value={values.email}
                   onChange={(e) => setField("email", e.target.value)}
                   className={[baseControl, hasError("email") ? errorRing : ""].join(" ")}
+                  placeholder="you@example.com"
                 />
                 {errors.email ? <p className="mt-2 text-sm text-red-400">{errors.email}</p> : null}
               </div>
@@ -190,6 +193,7 @@ export const ContactSection = () => {
                   value={values.phone}
                   onChange={(e) => setField("phone", e.target.value)}
                   className={[baseControl, hasError("phone") ? errorRing : ""].join(" ")}
+                  placeholder="Phone Number"
                 />
                 {errors.phone ? <p className="mt-2 text-sm text-red-400">{errors.phone}</p> : null}
               </div>
@@ -205,6 +209,7 @@ export const ContactSection = () => {
                 value={values.message}
                 onChange={(e) => setField("message", e.target.value)}
                 className={[textareaControl, hasError("message") ? errorRing : ""].join(" ")}
+                placeholder="Tell me a little about your project or what you need help with"
               />
               {errors.message ? (
                 <p className="mt-2 text-sm text-red-400">{errors.message}</p>
@@ -214,7 +219,7 @@ export const ContactSection = () => {
             <div className="mt-6 flex justify-end">
               <button
                 type="submit"
-                className="bg-white text-gray-950 h-12 rounded-xl font-semibold px-6 inline-flex items-center justify-center gap-2 cursor-pointer transition hover:bg-gray-100 active:scale-[0.99]"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.92] px-6 font-semibold text-gray-950 cursor-pointer transition hover:bg-white active:scale-[0.99]"
               >
                 Send Message
                 <ArrowUpRightIcon className="size-4" />
