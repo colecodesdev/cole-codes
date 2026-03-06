@@ -209,7 +209,7 @@ export const ContactSection = () => {
                 value={values.message}
                 onChange={(e) => setField("message", e.target.value)}
                 className={[textareaControl, hasError("message") ? errorRing : ""].join(" ")}
-                placeholder="Tell me a little about your project or what you need help with"
+                placeholder="Write me a message!"
               />
               {errors.message ? (
                 <p className="mt-2 text-sm text-red-400">{errors.message}</p>
