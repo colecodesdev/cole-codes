@@ -182,7 +182,7 @@ export const ProjectsSection = () => {
               >
                 
                 <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                  <div className="lg:pb-16">
+                  <div className="lg:pb-10">
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <div className="inline-flex gap-2 bg-gradient-to-r from-emerald-300 to-sky-400 bg-clip-text text-sm font-bold uppercase tracking-widest text-transparent">
