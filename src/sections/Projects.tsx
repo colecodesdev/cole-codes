@@ -44,7 +44,7 @@ const portfolioProjects: PortfolioProject[] = [
   image: codeChallengeGenerator,
 },
 {
-  company: "Reilly Labs",
+  company: "CloudPulse",
   year: "2025",
   title: "CloudPulse Cloud Deployment",
   results: [
