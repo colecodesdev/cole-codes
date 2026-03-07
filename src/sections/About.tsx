@@ -62,16 +62,36 @@ export const AboutSection = () => {
                 title="My Toolbox"
                 description="The tools and technologies I use to craft fast, reliable web experiences"
               />
-              <ToolboxItems
-                items={toolboxItems}
-                className=""
-                itemsWrapperClassName="animate-move-left [animation-duration:30s]"
-              />
-              <ToolboxItems
-                items={toolboxItems}
+              <div
+                style={{
+                  WebkitMaskImage:
+                    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                  maskImage:
+                    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                }}
+              >
+                <ToolboxItems
+                  items={toolboxItems}
+                  className=""
+                  itemsWrapperClassName="animate-move-left [animation-duration:30s]"
+                />
+              </div>
+
+              <div
                 className="my-6"
-                itemsWrapperClassName="-translate-x-1/2 animate-move-right [animation-duration:15s]"
-              />
+                style={{
+                  WebkitMaskImage:
+                    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                  maskImage:
+                    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                }}
+              >
+                <ToolboxItems
+                  items={toolboxItems}
+                  className=""
+                  itemsWrapperClassName="-translate-x-1/2 animate-move-right [animation-duration:15s]"
+                />
+              </div>
             </Card>
 
             <Card className="relative min-h-[280px] flex-1 p-0">
