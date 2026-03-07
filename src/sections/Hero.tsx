@@ -80,12 +80,11 @@ export const HeroSection = () => {
 
         <div className="mx-auto max-w-2xl">
           <h1 className="mt-8 text-center font-serif text-3xl tracking-wide text-white md:text-5xl">
-            Software Engineer:<br></br> Cloud &amp; AI Solutions
+            Software Engineer:<br></br> Cloud &amp; Web Applications
           </h1>
 
           <p className="mt-5 text-center text-white/70 md:text-lg md:leading-8">
-            I build and support production-facing systems across web, cloud, and client platforms,
-            combining technical execution with strong communication and real-world problem solving.
+            I build and support production systems across web and cloud environments, combining technical execution with strong communication and practical problem solving.
           </p>
         </div>
 

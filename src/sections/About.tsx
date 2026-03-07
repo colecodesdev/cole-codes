@@ -53,7 +53,7 @@ export const AboutSection = () => {
   return (
     <section className="py-16 lg:py-28" id="About">
       <div className="container">
-        <SectionHeader eyebrow="About Me" title="How I Build" />
+        <SectionHeader eyebrow="About Me" title="How I Build" description="I build reliable web and cloud applications with a focus on production troubleshooting, real-world delivery, and practical AWS-based infrastructure."/>
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="flex flex-col gap-8 lg:col-span-2">

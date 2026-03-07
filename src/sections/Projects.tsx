@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 
 import wildOlives from "@/assets/images/wild-olives.png";
-import winksLandingPage from "@/assets/images/winks-landing-page.png";
 import linkupLandingPage from "@/assets/images/linkup-landing-page.png";
 import codeChallengeGenerator from "@/assets/images/code-challenge.png";
+import cloudPulse from "@/assets/images/cloud-pulse.png";
 
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { Card } from "@/components/Card";
@@ -18,88 +18,91 @@ type PortfolioProject = {
   results: { title: string }[];
   more?: string[];
   link: string;
+  linkLabel?: string;
   image: any;
   github?: string;
 };
 
 const portfolioProjects: PortfolioProject[] = [
-  {
-    company: "Wild Olives 30A",
-    year: "2024 - 2026",
-    title: "Mediterranean Bistro Restaurant",
-    results: [
-      {
-        title:
-          "Rebuilt the production restaurant website as a React + Tailwind single-page application deployed on AWS S3 and CloudFront.",
-      },
-    ],
-    more: [
-      "Recreated the existing Wix-based site using a reusable React component architecture.",
-      "Implemented responsive layouts, mobile navigation, and client-side routing with React Router.",
-      "Structured the UI around reusable layout primitives and section components for maintainability.",
-      "Deployed the static frontend using AWS S3 and CloudFront for low-cost global delivery.",
-    ],
-    link: "https://d6uiwxps2u5ue.cloudfront.net/",
-    image: wildOlives,
-  },
-  {
-    company: "LinkUp Solutions",
-    year: "2024 - Present",
-    title: "Bilingual Consultation Platform",
-    results: [
-      {
-        title:
-          "WordPress multi-site platform supporting bilingual content and client consultation workflows.",
-      },
-    ],
-    more: [
-      "Configured and maintain WordPress multi-site architecture with shared infrastructure.",
-      "Implemented bilingual site structure and consultation workflows.",
-      "Managed hosting configuration and ongoing technical updates.",
-      "Provide production troubleshooting and technical support.",
-    ],
-    link: "https://linkupsolutions.us/",
-    image: linkupLandingPage,
-  },
-  {
-    company: "Reilly Labs",
-    year: "2026",
-    title: "AI Code Challenge Generator",
-    results: [
-      {
-        title:
-          "Built a full-stack AI application that generates programming challenges using the OpenAI API, with a React frontend and FastAPI backend deployed on AWS.",
-      },
-    ],
-    more: [
-      "Designed and implemented a React + Vite single-page application that allows users to generate programming challenges, answer multiple-choice questions, and review explanations while maintaining a consistent UI structure intended for reuse across future AI tools.",
-      "Developed a FastAPI backend that integrates with the OpenAI API to generate structured coding challenges, performs strict JSON validation on AI responses, and persists challenge data using SQLAlchemy with a SQLite database.",
-      "Deployed the frontend as a static site hosted in Amazon S3 and delivered globally through CloudFront, while routing /api requests to a containerized FastAPI backend running on an EC2 instance.",
-      "Containerized the backend with Docker and implemented a CI/CD pipeline using GitHub Actions with OIDC authentication to automatically build images, push them to Amazon ECR, and redeploy the backend container on EC2.",
-    ],
-    link: "https://d1tsfobuj7g5p2.cloudfront.net/",
-    image: codeChallengeGenerator,
-  },
-  {
-    company: "Winks Iron Lot",
-    year: "2025 - Present",
-    title: "Gym Website & Ecommerce Platform",
-    results: [
-      {
-        title:
-          "Production gym website with integrated ecommerce platform and ongoing technical support.",
-      },
-    ],
-    more: [
-      "Built and deployed website supporting membership information and apparel sales.",
-      "Configured ecommerce platform including product catalog and checkout workflows.",
-      "Supported store launch and ongoing feature updates.",
-      "Provide ongoing technical consulting and troubleshooting.",
-    ],
-    link: "https://www.winksironlot.net/",
-    image: winksLandingPage,
-  },
-  
+{
+  company: "Reilly Labs",
+  year: "2026",
+  title: "AI Code Challenge Generator",
+  results: [
+    {
+      title:
+        "Built a full-stack AI application that generates programming challenges using the OpenAI API, with a React frontend and FastAPI backend deployed on AWS.",
+    },
+  ],
+  more: [
+    "Designed and implemented a React + Vite single-page application that allows users to generate programming challenges, answer multiple-choice questions, and review explanations within a consistent UI structure.",
+    "Developed a FastAPI backend that integrates with the OpenAI API to generate structured coding challenges, performs strict JSON validation on AI responses, and stores challenge history using SQLAlchemy with a SQLite database.",
+    "Deployed the frontend as a static site hosted in Amazon S3 and delivered through CloudFront, while routing /api requests to a containerized FastAPI backend running on EC2.",
+    "Implemented a CI/CD pipeline using GitHub Actions with OIDC authentication to build Docker images, push them to Amazon ECR, and automatically redeploy the backend container.",
+  ],
+  link: "https://d1tsfobuj7g5p2.cloudfront.net/",
+  image: codeChallengeGenerator,
+},
+{
+  company: "Reilly Labs",
+  year: "2025",
+  title: "CloudPulse Cloud Deployment",
+  results: [
+    {
+      title:
+        "Designed a production-style cloud deployment using Docker containers, Terraform infrastructure, and AWS ECS.",
+    },
+  ],
+  more: [
+    "Built a full-stack application consisting of a React frontend, Spring Boot API, and PostgreSQL database running as containers on Amazon ECS (EC2 launch type).",
+    "Provisioned all infrastructure using Terraform including VPC networking, ECS cluster, Auto Scaling Group, IAM roles, and remote state management with S3 and DynamoDB.",
+    "Configured nginx as a reverse proxy to route traffic between the frontend and backend while exposing only port 80 on a single EC2 instance.",
+    "Implemented automated deployments using GitHub Actions with OIDC role assumption to build Docker images, push them to Amazon ECR, and update the ECS service.",
+  ],
+  link: "https://github.com/colecodesdev/cloud-pulse",
+  linkLabel: "Repo Link",
+  image: cloudPulse,
+},
+
+{
+  company: "Wild Olives 30A",
+  year: "2024 - 2026",
+  title: "Mediterranean Bistro Restaurant",
+  results: [
+    {
+      title:
+        "Rebuilt the production restaurant website as a React + Tailwind single-page application deployed on AWS S3 and CloudFront.",
+    },
+  ],
+  more: [
+    "Recreated the existing Wix-based site using a reusable React component architecture designed for maintainability and responsive layouts.",
+    "Implemented client-side routing with React Router, mobile navigation systems, and responsive UI components using Tailwind CSS.",
+    "Structured the UI around reusable layout primitives and composable section components to simplify page creation and reduce duplication.",
+    "Deployed the static frontend using Amazon S3 and CloudFront for low-cost global delivery and CDN caching.",
+  ],
+  link: "https://d6uiwxps2u5ue.cloudfront.net/",
+  image: wildOlives,
+},
+
+{
+  company: "LinkUp Solutions",
+  year: "2024 - Present",
+  title: "Bilingual Consultation Platform",
+  results: [
+    {
+      title:
+        "Maintain a WordPress multi-site platform supporting bilingual content and client consultation workflows.",
+    },
+  ],
+  more: [
+    "Configured and maintain WordPress multi-site architecture with shared infrastructure supporting multiple language-specific sites.",
+    "Implement UI updates, build new pages using reusable components, and extend theme functionality with custom code when required.",
+    "Manage hosting configuration, plugin updates, and performance optimization across production environments.",
+    "Provide ongoing troubleshooting and technical support for client-facing systems and platform updates.",
+  ],
+  link: "https://linkupsolutions.us/",
+  image: linkupLandingPage,
+},
 ];
 
 const ChevronDownIcon = ({ className }: { className?: string }) => (
@@ -215,7 +218,7 @@ export const ProjectsSection = () => {
                           type="button"
                           className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.92] px-6 font-semibold text-gray-950 transition hover:bg-white sm:w-auto"
                         >
-                          <span>Live Demo</span>
+                          <span>{project.linkLabel ?? "Live Demo"}</span>
                           <ArrowUpRightIcon className="size-4" />
                         </button>
                       </a>
