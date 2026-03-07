@@ -23,9 +23,9 @@ export const Footer = () => {
       <div className="container">
         <div className="flex flex-col items-center gap-8 border-t border-white/10 py-6 text-sm md:flex-row md:justify-between">
 
-          <div className="text-white/35">
-            &copy; 2025. All rights reserved.
-          </div>
+            <p className="bg-gradient-to-r from-emerald-300 to-sky-400 bg-clip-text text-sm font-semibold uppercase tracking-[0.3em] text-transparent">
+                  Colton Reilly
+            </p>
 
           <nav className="flex flex-col items-center gap-6 md:flex-row md:gap-8">
             {footerLinks.map((link) => (
