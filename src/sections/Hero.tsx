@@ -78,9 +78,9 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-3xl">
           <h1 className="mt-8 text-center font-serif text-3xl tracking-wide text-white md:text-5xl">
-            Software Engineer:<br></br> Cloud &amp; Web Applications
+            Software Engineering Graduate:<br></br> Cloud &amp; Web Applications
           </h1>
 
           <p className="mt-5 text-center text-white/70 md:text-lg md:leading-8">
