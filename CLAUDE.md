@@ -1,6 +1,6 @@
-# {{PROJECT_NAME}}
+# Cole Codes Portfolio
 
-{{ONE_SENTENCE_DESCRIPTION}}
+Personal portfolio site for Cole Reilly (Colton Reilly), a single-page Next.js App Router site at https://colecodes.dev that showcases real-world client work and includes a contact form for inbound inquiries.
 
 ## Context Files
 
@@ -12,26 +12,31 @@ Read the following to get the full context of the project:
 
 ## Commands
 
-<!-- Replace with this project's actual commands. Examples below. -->
+- `npm run dev`: start Next.js dev server (default port 3000)
+- `npm run build`: production build
+- `npm run start`: run the production build locally
+- `npm run lint`: run `next lint` (ESLint with `next/core-web-vitals`)
+- `npm run format`: format the repo with Prettier
+- `npm run type-check`: run `tsc --noEmit`
 
-- `{{DEV_COMMAND}}`: start dev server
-- `{{BUILD_COMMAND}}`: production build
-- `{{LINT_COMMAND}}`: run linter
-- `{{TEST_COMMAND}}`: run tests
-- `{{TEST_WATCH_COMMAND}}`: run tests in watch mode
+There is no automated test runner configured in this repo.
 
-## {{INFRASTRUCTURE_SECTION_NAME}}
+## Hosting & Deployment
 
-<!--
-Use this section for any infrastructure that needs project-specific instructions Claude should hold every session. Examples:
+- Hosted on Vercel (production domain: `colecodes.dev`).
+- Deploys are triggered by pushes to `main` (no CI workflow lives in the repo).
+- No backend services. The contact form is intended to submit through EmailJS from the browser.
 
-- Database branches (dev vs prod) and which to use by default
-- Cloud project IDs, regions
-- Feature flags, environment toggles
-- Deploy targets
+## Repository Layout
 
-Delete this section if not applicable.
--->
+- `src/app/`: App Router entry (`layout.tsx`, `page.tsx`, `globals.css`).
+- `src/sections/`: Top-level page sections composed by `app/page.tsx` (Header, Hero, Projects, About, Contact, Footer).
+- `src/components/`: Reusable UI primitives (Card, CardHeader, SectionHeader, HeroOrbit, ToolboxItems, TechIcon, plus legacy ContactForm and GoogleMaps).
+- `src/assets/icons/`: SVGs imported as React components via SVGR.
+- `src/assets/images/`: PNG/JPG assets imported via `next/image`.
+- `context/`: Project documentation, feature specs, and research prompts (not shipped).
+- `public/`: Static assets served at the root URL (currently only Next.js/Vercel default SVGs).
 
-- {{INFRASTRUCTURE_DETAIL_1}}
-- {{INFRASTRUCTURE_DETAIL_2}}
+## Path Aliases
+
+- `@/*` resolves to `./src/*` (configured in `tsconfig.json`).
