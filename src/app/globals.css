@@ -4,9 +4,9 @@
 
 @layer base {
     :root {
-        --bg-main: #0d0f14;
-        --bg-panel: #161a22;
-        --bg-panel-2: #1d2330;
+        --bg-main: #0a0a0a;
+        --bg-panel: #161616;
+        --bg-panel-2: #1f1f1f;
         --text-main: #e7eaf0;
         --text-muted: rgba(231, 234, 240, 0.68);
         --text-soft: rgba(231, 234, 240, 0.45);

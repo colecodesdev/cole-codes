@@ -105,7 +105,7 @@ export const ContactSection = () => {
         >
           <div
             className={[
-              "rounded-2xl border border-white/10 bg-[#161a22]/90 px-5 py-4 shadow-2xl shadow-black/30 backdrop-blur-md",
+              "rounded-2xl border border-white/10 bg-[#161616]/90 px-5 py-4 shadow-2xl shadow-black/30 backdrop-blur-md",
               "transition-all duration-200",
               toastOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0",
             ].join(" ")}

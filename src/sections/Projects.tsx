@@ -100,7 +100,6 @@ const portfolioProjects: PortfolioProject[] = [
     company: "LinkUp Solutions",
     year: "2025 - Present",
     title: "Bilingual Consultation Platform",
-    techStack: "WordPress Multisite, PHP, CSS, JavaScript",
     focus: ["Client Systems", "WordPress Platform Engineering", "Technical Support"],
     results: [
       {
