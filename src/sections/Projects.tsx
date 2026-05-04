@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 import wildOlives from "@/assets/images/wild-olives.png";
 import linkupLandingPage from "@/assets/images/linkup-landing-page.png";
@@ -11,6 +11,7 @@ import cloudPulse from "@/assets/images/cloud-pulse.png";
 import GitHubIcon from "@/assets/icons/github.svg";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import { Card } from "@/components/Card";
+import { GradientText } from "@/components/GradientText";
 
 type PortfolioProject = {
   company: string;
@@ -22,17 +23,18 @@ type PortfolioProject = {
   more?: string[];
   link?: string;
   linkLabel?: string;
-  image: any;
+  image: StaticImageData;
   github?: string;
   hideLinkButton?: boolean;
 };
 
 const portfolioProjects: PortfolioProject[] = [
-    {
+  {
     company: "CloudPulse",
     year: "2026",
     title: "CloudPulse Cloud Deployment",
-    techStack: "React, TypeScript, Spring Boot, PostgreSQL, Docker, Terraform, AWS ECS, ECR, EC2, GitHub Actions",
+    techStack:
+      "React, TypeScript, Spring Boot, PostgreSQL, Docker, Terraform, AWS ECS, ECR, EC2, GitHub Actions",
     github: "https://github.com/colecodesdev/cloud-pulse",
     focus: ["Cloud Infrastructure", "Docker & Containers", "Terraform IaC"],
     hideLinkButton: true,
@@ -56,7 +58,8 @@ const portfolioProjects: PortfolioProject[] = [
     company: "Reilly Labs",
     year: "2026",
     title: "AI Code Challenge Generator",
-    techStack: "React, Vite, FastAPI, OpenAI API, SQLAlchemy, SQLite, Docker, AWS, GitHub Actions",
+    techStack:
+      "React, Vite, FastAPI, OpenAI API, SQLAlchemy, SQLite, Docker, AWS, GitHub Actions",
     github: "https://github.com/colecodesdev/code-challenge-generator",
     focus: ["AI Integration", "Full-Stack Development", "CI/CD Automation"],
     results: [
@@ -80,7 +83,11 @@ const portfolioProjects: PortfolioProject[] = [
     title: "Mediterranean Bistro Restaurant",
     techStack: "React, Tailwind CSS, React Router, AWS S3, CloudFront",
     github: "https://github.com/colecodesdev/wild-olives",
-    focus: ["Production Web Applications", "Frontend Architecture", "Cloud Hosting"],
+    focus: [
+      "Production Web Applications",
+      "Frontend Architecture",
+      "Cloud Hosting",
+    ],
     results: [
       {
         title:
@@ -100,7 +107,11 @@ const portfolioProjects: PortfolioProject[] = [
     company: "LinkUp Solutions",
     year: "2025 - Present",
     title: "Bilingual Consultation Platform",
-    focus: ["Client Systems", "WordPress Platform Engineering", "Technical Support"],
+    focus: [
+      "Client Systems",
+      "WordPress Platform Engineering",
+      "Technical Support",
+    ],
     results: [
       {
         title:
@@ -133,6 +144,9 @@ const ChevronDownIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const ctaBase =
+  "inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/10 px-6 font-semibold transition";
+
 export const ProjectsSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -156,9 +170,12 @@ export const ProjectsSection = () => {
     <section className="pb-16 lg:py-24" id="Projects">
       <div className="container">
         <div className="flex justify-center">
-          <p className="bg-gradient-to-r from-emerald-300 to-sky-400 bg-clip-text text-center text-sm font-semibold uppercase tracking-[0.3em] text-transparent md:text-base">
+          <GradientText
+            as="p"
+            className="text-center text-sm font-semibold uppercase tracking-[0.3em] md:text-base"
+          >
             Real-world Results
-          </p>
+          </GradientText>
         </div>
 
         <h2 className="mt-6 text-center font-serif text-3xl text-white md:text-5xl">
@@ -179,16 +196,15 @@ export const ProjectsSection = () => {
                 key={project.title}
                 className="px-8 pt-8 pb-0 transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.04] after:pointer-events-none md:px-10 md:pt-12 lg:px-20 lg:pt-16"
               >
-                
                 <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                   <div className="lg:pb-10">
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <div className="inline-flex gap-2 bg-gradient-to-r from-emerald-300 to-sky-400 bg-clip-text text-sm font-bold uppercase tracking-widest text-transparent">
+                        <GradientText className="inline-flex gap-2 text-sm font-bold uppercase tracking-widest">
                           <span>{project.company}</span>
                           <span>&bull;</span>
                           <span>{project.year}</span>
-                        </div>
+                        </GradientText>
 
                         <h3 className="mt-2 font-serif text-2xl text-white md:mt-5 md:text-4xl">
                           {project.title}
@@ -199,8 +215,9 @@ export const ProjectsSection = () => {
                         <a
                           href={project.github}
                           target="_blank"
-                          rel="noreferrer"
-                          className="mt-1 self-start inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] transition hover:bg-white/[0.06] hover:border-white/20"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${project.title} on GitHub`}
+                          className="mt-1 inline-flex h-11 w-11 shrink-0 items-center justify-center self-start rounded-xl border border-white/10 bg-white/[0.03] transition hover:border-white/20 hover:bg-white/[0.06]"
                         >
                           <GitHubIcon className="size-5 text-white" />
                         </a>
@@ -227,7 +244,7 @@ export const ProjectsSection = () => {
                       </div>
                     ) : null}
 
-                    <hr className="mt-4 border-t border-white/8 md:mt-5" />
+                    <hr className="mt-4 border-t border-white/10 md:mt-5" />
 
                     <ul className="mt-4 flex flex-col gap-4 md:mt-5">
                       {project.results.map((result) => (
@@ -246,7 +263,7 @@ export const ProjectsSection = () => {
                         onClick={() => toggle(projectIndex)}
                         aria-expanded={isOpen}
                         aria-controls={`project-accordion-${projectIndex}`}
-                        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-6 font-semibold text-white transition hover:bg-white/[0.06] sm:w-auto"
+                        className={`${ctaBase} w-full bg-white/[0.03] text-white hover:bg-white/[0.06] sm:w-auto`}
                       >
                         {isOpen ? "Read Less" : "Read More"}
                         <ChevronDownIcon
@@ -260,18 +277,13 @@ export const ProjectsSection = () => {
                         <a
                           href={project.link}
                           target="_blank"
-                          rel="noreferrer"
-                          className="w-full sm:w-auto"
+                          rel="noopener noreferrer"
+                          className={`${ctaBase} w-full bg-white/[0.92] text-gray-950 hover:bg-white sm:w-auto`}
                         >
-                          <button
-                            type="button"
-                            className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.92] px-6 font-semibold text-gray-950 transition hover:bg-white sm:w-auto"
-                          >
-                            <span>{project.linkLabel ?? "Live Demo"}</span>
-                            <ArrowUpRightIcon className="size-4" />
-                          </button>
+                          <span>{project.linkLabel ?? "Live Demo"}</span>
+                          <ArrowUpRightIcon className="size-4" />
                         </a>
-                      ) : null }
+                      ) : null}
                     </div>
 
                     <div className="mt-6">
@@ -313,6 +325,7 @@ export const ProjectsSection = () => {
                     <Image
                       src={project.image}
                       alt={project.title}
+                      sizes="(max-width: 1200px) 100vw, 600px"
                       className="mt-8 -mb-4 md:-mb-0 lg:absolute lg:mt-0 lg:h-full lg:w-auto lg:max-w-none"
                     />
                   </div>

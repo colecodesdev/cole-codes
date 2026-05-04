@@ -1,7 +1,9 @@
 {
-  "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [],
   "permissions": {
-    "allow": []
-  }
+    "allow": [
+      "WebSearch"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": []
 }

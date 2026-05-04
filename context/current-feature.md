@@ -2,65 +2,59 @@
 
 ## Status
 
-Audit / Triage (no active feature)
+Audit Sweep Complete (2026-05-03)
 
 ## Goals
 
-Establish a baseline assessment of the codebase before targeted audits for performance, security, and UI. The follow-on audit work will draw findings from this scan.
+Land every actionable finding from the 2026-05-03 code scan in a single pass. Verify with `npm run type-check`, `npm run lint`, and `npm run build`.
 
 ## Notes
 
-- No active feature branch is in flight. Working tree is clean as of 2026-05-03 on `main`.
-- Recent commits (most recent first): `add claude scaffold`, `darken background, install playwright`, `adjust title in hero`, `remove images, change laptop color`, `fix project padding`.
-- The `/loop` and `/feature` workflows have not been used yet on this repo; the spec/research templates in `context/features/` and `context/research/` are still placeholders.
+- Full report: [context/research/code-scan-2026-05-03.md](research/code-scan-2026-05-03.md). The "Status" section at the top of that file enumerates how each Critical/High/Medium/Low item was resolved.
+- Build verified end-to-end. Production bundle: `/` is 115 KB First Load JS, plus auto-served `/robots.txt` and `/sitemap.xml`.
+- Working tree on `main` (not branched — this was a rolling cleanup pass, not a feature). Will need a single commit before pushing.
 
-### Audit checklist (raw findings, not yet prioritized)
+### What landed
 
-These are surfaced here as inputs to upcoming performance/security/UI audits.
+**Removals**
+- Deleted: `src/sections/Contact.tsx`, `src/sections/Footer copy.tsx`, `src/sections/Testimonials.tsx`, `src/sections/Tape.tsx`, `src/components/ContactForm.tsx`, `src/components/GoogleMaps.tsx`.
+- Deleted assets: `quin-digital-landing-page.png`, `wild-olives-30a-landing-page.png`, `arrow-down.svg`, `check-circle.svg`, `npm.svg`.
+- Removed Contact link from header and Contact section from `page.tsx`.
+- Uninstalled: `@emailjs/browser`, `framer-motion`, `dotenv`. Bumped `next` to `14.2.35`.
 
-#### Dead / duplicate code
-- `src/sections/Footer copy.tsx` is a near-duplicate of `Footer.tsx` and is not imported anywhere. The filename also contains a space.
-- `src/sections/Testimonials.tsx` returns the literal text `"Testimonials Section"` and is not imported.
-- `src/sections/Tape.tsx` defines a marquee but is not imported by `app/page.tsx`.
-- `src/components/ContactForm.tsx` is the legacy contact form. It is replaced by `src/sections/Contact.tsx` and is not imported.
-- `src/components/GoogleMaps.tsx` reads `process.env.GOOGLE_MAPS_API_KEY` (not `NEXT_PUBLIC_*`, so always undefined in the browser) and is not imported.
-- `src/assets/images/quin-digital-landing-page.png` and `src/assets/images/wild-olives-30a-landing-page.png` are not referenced by any section.
-- `src/assets/icons/arrow-down.svg`, `src/assets/icons/check-circle.svg`, and `src/assets/icons/npm.svg` are not referenced.
+**New files**
+- `src/components/GradientText.tsx`: shared eyebrow / accent gradient text primitive.
+- `src/components/TechIconDefs.tsx`: single SVG `<defs>` for the toolbox icon gradient (renders once in `AboutSection`).
+- `src/app/robots.ts`, `src/app/sitemap.ts`: Next.js file-based metadata routes.
 
-#### Security / config
-- `src/components/ContactForm.tsx` hardcodes `SERVICE_ID`, `TEMPLATE_ID`, and `PUBLIC_KEY` for EmailJS. EmailJS public keys are designed to be exposed client-side, but they should still be moved to `NEXT_PUBLIC_EMAILJS_*` env vars before any new contact-form work to make rotation simple and to keep them out of git history going forward.
-- `src/sections/Contact.tsx` validates input but does NOT actually submit anywhere — `onSubmit` only calls `console.log("Form submitted:", values)`. The form looks live to a visitor but silently drops messages.
-- `src/components/ContactForm.tsx` (legacy) imports `dotenv` for no reason, and `dotenv` is also a runtime dependency in `package.json`. Next.js loads `.env*` files natively; `dotenv` should be removed from dependencies.
-- `metadata.description` in `src/app/layout.tsx` is an empty string. SEO/social shares will be empty.
-- No `robots.txt`, no `sitemap.ts`, no Open Graph image, no `viewport` export.
-- `.env` is gitignored (good). No `.env.example` exists to document required keys.
+**Behavioral / a11y / perf changes**
+- Hero memoji has `priority` + `sizes`; project card images, map image, and About memoji all have `sizes`.
+- `<a><button>` nesting collapsed to single `<a>` styled as a button in Hero (GitHub, Resume) and Projects (Live Demo).
+- All `target="_blank"` links now use `rel="noopener noreferrer"`.
+- Project GitHub icon links have `aria-label="View {title} on GitHub"`.
+- Header "Home" `href="#"` → `href="/"`. Header is now a `<header>` element with `<nav aria-label="Primary">`.
+- `<main id="main">` wraps the sections; skip-to-content link is the first focusable element on the page.
+- `prefers-reduced-motion` media query in `globals.css` disables animations and smooth scroll.
+- `HeroOrbit`: extracted `HeroOrbitProps` type, dropped `PropsWithChildren`, conditional inline `animationDuration` (only set when actually animating).
+- `TechIcon` no longer renders duplicate `<linearGradient id="tech-icon-gradient">` (was rendering 26 of them).
 
-#### Performance
-- `src/assets/images/` contains very large raster files imported via `next/image`: `linkup-landing-page.png` (≈ 2.9 MB), `wild-olives.png` (≈ 3.1 MB), `my-memoji-computer.png` (≈ 1.5 MB), `my-memoji.png` (≈ 0.8 MB), `new-map.png` (≈ 0.4 MB), `cloud-pulse.png` (≈ 0.3 MB). These get optimized at build time but should still be re-encoded / dimensioned to source size before optimization.
-- `src/sections/Hero.tsx` renders 10 `HeroOrbit` instances + 4 `.hero-ring` elements; each orbit nests three `animate-spin` divs. Worth profiling on mid-tier mobile to confirm scroll/jank stays acceptable.
-- `framer-motion` is installed (~50 KB gz) but not used anywhere. Remove it from dependencies if it stays unused.
-- `dotenv` (~17 KB) is also unused at runtime.
-- `react-icons` is used only for `FaGithub` in `Hero.tsx`. The package supports tree-shaking via deep imports (`react-icons/fa/FaGithub`), but using a local SVG (`github.svg` already exists) is even cheaper.
+**Type / quality**
+- `PortfolioProject.image` typed as `StaticImageData`.
+- `[...new Array(2)].fill(0)` → `Array.from({ length: 2 })` in `ToolboxItems`.
+- About-section toolbox mask extracted to `horizontalFadeMask` const.
 
-#### UI / UX
-- `src/sections/Header.tsx`: the "Home" link `href="#"` causes a small jump on click. Should be `href="/"` or `href="#top"` with a matching `id="top"`.
-- The header sits over the hero on mobile and can occlude the memoji on the smallest screens; verify against `sm: 375px`.
-- The contact form's "Send Message" button only logs and never resets `values`; users who submit twice see the same data.
-- The toast in `Contact.tsx` shows for 4500 ms and is positioned absolutely at `top-24` — confirm it does not obscure form fields on small screens.
-- Project accordion uses `setTimeout(..., 50)` before `scrollIntoView`; this is fragile if the open animation is retimed.
-- No skip-to-content link or visible focus rings on the hero CTAs (default browser focus is suppressed in some environments by Tailwind reset).
+**SEO / config**
+- `layout.tsx`: real `description`, `metadataBase`, `viewport` (with `themeColor`), OpenGraph, Twitter card, canonical, robots.
+- `next.config.mjs`: `images.formats: ['image/avif', 'image/webp']`, security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`).
+- `tailwind.config.ts`: full font fallback stacks for sans/serif; comment documenting the intentional breakpoint override.
+- Dynamic copyright line in Footer.
 
-#### Accessibility
-- Project hero memoji image alt is "Person peeking from behind laptop" — fine.
-- Map decorative `Image` in `About.tsx` has alt "Map showing my location" — acceptable but the inner pulse decoration has none, which is correct (decorative).
-- The custom dismiss button in the toast uses `aria-label="Dismiss"` — good.
-- Several icon-only buttons (e.g. project GitHub link button) lack any visible label or `aria-label`. They have a child SVG but no accessible name.
-- Heading order: page has multiple `h2`s and per-card `h3`s, no `h1` reuse; structure looks OK.
+### Carry-over for a separate pass
 
-#### Type safety
-- `image: any` in the `PortfolioProject` type in `Projects.tsx` should be `StaticImageData` from `next/image`.
-- `Card`, `CardHeader`, `SectionHeader`, `ToolboxItems`, `HeroOrbit` all type props inline; that is fine but `PropsWithChildren` is mixed with explicit `children: React.ReactNode` in different files. Pick one and apply consistently.
+- **Manual: rotate the leaked EmailJS public key (`ZHs_871fM5mduIaVX`) in the EmailJS dashboard.** The file is gone but the key is permanent in git history.
+- **`npm audit` still reports 9 vulnerabilities** (postcss/picomatch via Next.js, plus a Next.js Server Components DoS). All require `npm audit fix --force`, which upgrades to Next.js 16 (breaking). Schedule as its own upgrade effort.
+- **Two cosmetic warnings** from `npm run build`: (1) `sharp` recommended for image optimization (Vercel installs it automatically in production), (2) `caniuse-lite` outdated (`npx update-browserslist-db@latest` to refresh).
 
 ## History
 
-(none yet)
+- **2026-05-03 — Baseline audit + sweep:** populated `context/` templates with real project info; ran code-scanner agent; deleted contact form (and wiring) plus four other dead section/component files and five unused assets; uninstalled three unused deps; bumped Next.js to 14.2.35; resolved every High/Medium/Low item from the scan; added robots/sitemap, OG/Twitter metadata, viewport with themeColor, security headers, AVIF/WebP, prefers-reduced-motion, skip-to-content, `<header>`/`<main>` landmarks. Build, lint, and type-check all green.

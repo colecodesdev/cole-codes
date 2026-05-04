@@ -1,11 +1,14 @@
-import myMemojiComputer from '@/assets/images/my-memoji-computer.png'
-import Image from "next/image"
-import ResumeIcon from '@/assets/icons/resume.svg'
-import grainImage from '@/assets/images/grain.jpg'
-import StarIcon from '@/assets/icons/star.svg'
-import SparkleIcon from '@/assets/icons/sparkle.svg'
+import myMemojiComputer from "@/assets/images/my-memoji-computer.png";
+import Image from "next/image";
+import ResumeIcon from "@/assets/icons/resume.svg";
+import grainImage from "@/assets/images/grain.jpg";
+import StarIcon from "@/assets/icons/star.svg";
+import SparkleIcon from "@/assets/icons/sparkle.svg";
 import { FaGithub } from "react-icons/fa";
-import { HeroOrbit } from '@/components/HeroOrbit'
+import { HeroOrbit } from "@/components/HeroOrbit";
+
+const ctaBase =
+  "inline-flex h-12 items-center gap-2 rounded-xl border border-white/10 px-6 font-semibold transition";
 
 export const HeroSection = () => {
   return (
@@ -68,6 +71,8 @@ export const HeroSection = () => {
             src={myMemojiComputer}
             className="size-[100px] translate-y-1"
             alt="Person peeking from behind laptop"
+            priority
+            sizes="100px"
           />
 
           <div className="inline-flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 backdrop-blur-sm">
@@ -80,7 +85,7 @@ export const HeroSection = () => {
 
         <div className="mx-auto max-w-3xl">
           <h1 className="mt-8 text-center font-serif text-3xl tracking-wide text-white md:text-5xl">
-            Software Engineering Graduate:<br></br> Cloud &amp; Web Applications
+            Software Engineering Graduate:<br /> Cloud &amp; Web Applications
           </h1>
 
           <p className="mt-5 text-center text-white/70 md:text-lg md:leading-8">
@@ -89,21 +94,27 @@ export const HeroSection = () => {
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row">
-          <a href="https://github.com/colecodesdev/" target="_blank" rel="noreferrer" className="z-10">
-            <button className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-6 transition hover:bg-white/[0.06]">
-              <FaGithub className="size-4" />
-              <span className="font-semibold">GitHub</span>
-            </button>
+          <a
+            href="https://github.com/colecodesdev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${ctaBase} z-10 bg-white/[0.03] text-white hover:bg-white/[0.06]`}
+          >
+            <FaGithub className="size-4" />
+            <span>GitHub</span>
           </a>
 
-          <a href="https://coltonresume.com/" target="_blank" rel="noreferrer" className="z-10">
-            <button className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.92] px-6 text-gray-950 transition hover:bg-white">
-              <ResumeIcon className="size-4" />
-              <span className="font-semibold">Resume</span>
-            </button>
+          <a
+            href="https://coltonresume.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${ctaBase} z-10 bg-white/[0.92] text-gray-950 hover:bg-white`}
+          >
+            <ResumeIcon className="size-4" />
+            <span>Resume</span>
           </a>
         </div>
       </div>
     </div>
-  )
+  );
 };

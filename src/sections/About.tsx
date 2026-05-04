@@ -1,5 +1,3 @@
-"use client";
-
 import { SectionHeader } from "@/components/SectionHeader";
 import { Card } from "@/components/Card";
 import Image from "next/image";
@@ -23,6 +21,7 @@ import myMemoji from "@/assets/images/my-memoji.png";
 
 import { CardHeader } from "@/components/CardHeader";
 import { ToolboxItems } from "@/components/ToolboxItems";
+import { TechIconDefs } from "@/components/TechIconDefs";
 
 const toolboxItems = [
   { title: "JavaScript", iconType: JavascriptIcon },
@@ -49,11 +48,23 @@ const principles = [
   "Fast iteration and continuous refinement",
 ];
 
+const horizontalFadeMask = {
+  WebkitMaskImage:
+    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+  maskImage:
+    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+};
+
 export const AboutSection = () => {
   return (
     <section className="py-16 lg:py-28" id="About">
+      <TechIconDefs />
       <div className="container">
-        <SectionHeader eyebrow="About Me" title="How I Build" description="I build reliable web and cloud applications with a focus on production troubleshooting, real-world delivery, and practical AWS-based infrastructure."/>
+        <SectionHeader
+          eyebrow="About Me"
+          title="How I Build"
+          description="I build reliable web and cloud applications with a focus on production troubleshooting, real-world delivery, and practical AWS-based infrastructure."
+        />
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="flex flex-col gap-8 lg:col-span-2">
@@ -62,33 +73,16 @@ export const AboutSection = () => {
                 title="My Toolbox"
                 description="The tools and technologies I use to craft fast, reliable web experiences"
               />
-              <div
-                style={{
-                  WebkitMaskImage:
-                    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-                  maskImage:
-                    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-                }}
-              >
+              <div style={horizontalFadeMask}>
                 <ToolboxItems
                   items={toolboxItems}
-                  className=""
                   itemsWrapperClassName="animate-move-left [animation-duration:30s]"
                 />
               </div>
 
-              <div
-                className="my-6"
-                style={{
-                  WebkitMaskImage:
-                    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-                  maskImage:
-                    "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-                }}
-              >
+              <div className="my-6" style={horizontalFadeMask}>
                 <ToolboxItems
                   items={toolboxItems}
-                  className=""
                   itemsWrapperClassName="-translate-x-1/2 animate-move-right [animation-duration:15s]"
                 />
               </div>
@@ -98,14 +92,16 @@ export const AboutSection = () => {
               <Image
                 src={newMapImage}
                 alt="Map showing my location"
+                sizes="(max-width: 1200px) 100vw, 700px"
                 className="absolute inset-0 h-full w-full object-cover object-[left_30%]"
               />
-              <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 rounded-full after:content-[""] after:absolute after:inset-0 after:outline after:outline-2 after:-outline-offset-2 after:rounded-full after:outline-gray-950/30'>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-20 animate-ping [animation-duration:2s]"></div>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 -z-10"></div>
+              <div className='absolute top-1/2 left-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rounded-full after:absolute after:inset-0 after:rounded-full after:outline after:outline-2 after:-outline-offset-2 after:outline-gray-950/30 after:content-[""]'>
+                <div className="absolute inset-0 -z-20 animate-ping rounded-full bg-gradient-to-r from-emerald-300 to-sky-400 [animation-duration:2s]"></div>
+                <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-emerald-300 to-sky-400"></div>
                 <Image
                   src={myMemoji}
                   alt="Cole Codes Memoji"
+                  sizes="80px"
                   className="size-20"
                 />
               </div>

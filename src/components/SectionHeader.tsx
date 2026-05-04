@@ -1,3 +1,5 @@
+import { GradientText } from "./GradientText";
+
 type SectionHeaderProps = {
   eyebrow: string;
   title: string;
@@ -10,11 +12,14 @@ export const SectionHeader = ({
   description,
 }: SectionHeaderProps) => {
   return (
-    <div className="flex max-w-3xl flex-col items-center mx-auto text-center">
-      <p className="font-semibold uppercase tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text">
+    <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+      <GradientText
+        as="p"
+        className="font-semibold uppercase tracking-widest"
+      >
         {eyebrow}
-      </p>
-      <h2 className="mt-6 font-serif text-3xl md:text-5xl text-white">
+      </GradientText>
+      <h2 className="mt-6 font-serif text-3xl text-white md:text-5xl">
         {title}
       </h2>
       {description && (
