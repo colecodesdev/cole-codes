@@ -6,7 +6,6 @@ import Image, { type StaticImageData } from "next/image";
 import wildOlives from "@/assets/images/wild-olives.png";
 import linkupLandingPage from "@/assets/images/linkup-landing-page.png";
 import codeChallengeGenerator from "@/assets/images/code-challenge.png";
-import cloudPulse from "@/assets/images/cloud-pulse.png";
 
 import GitHubIcon from "@/assets/icons/github.svg";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
@@ -29,31 +28,6 @@ type PortfolioProject = {
 };
 
 const portfolioProjects: PortfolioProject[] = [
-  {
-    company: "CloudPulse",
-    year: "2026",
-    title: "CloudPulse Cloud Deployment",
-    techStack:
-      "React, TypeScript, Spring Boot, PostgreSQL, Docker, Terraform, AWS ECS, ECR, EC2, GitHub Actions",
-    github: "https://github.com/colecodesdev/cloud-pulse",
-    focus: ["Cloud Infrastructure", "Docker & Containers", "Terraform IaC"],
-    hideLinkButton: true,
-    results: [
-      {
-        title:
-          "Designed a production-style cloud deployment using Docker containers, Terraform infrastructure, and AWS ECS.",
-      },
-    ],
-    more: [
-      "Built a full-stack application consisting of a React frontend, Spring Boot API, and PostgreSQL database running as containers on Amazon ECS (EC2 launch type).",
-      "Provisioned all infrastructure using Terraform including VPC networking, ECS cluster, Auto Scaling Group, IAM roles, and remote state management with S3 and DynamoDB.",
-      "Configured nginx as a reverse proxy to route traffic between the frontend and backend while exposing only port 80 on a single EC2 instance.",
-      "Implemented automated deployments using GitHub Actions with OIDC role assumption to build Docker images, push them to Amazon ECR, and update the ECS service.",
-    ],
-    link: "https://github.com/colecodesdev/cloud-pulse",
-    linkLabel: "View Project",
-    image: cloudPulse,
-  },
   {
     company: "Reilly Labs",
     year: "2026",
