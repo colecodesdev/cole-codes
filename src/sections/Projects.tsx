@@ -29,29 +29,6 @@ type PortfolioProject = {
 
 const portfolioProjects: PortfolioProject[] = [
   {
-    company: "Reilly Labs",
-    year: "2026",
-    title: "AI Code Challenge Generator",
-    techStack:
-      "React, Vite, FastAPI, OpenAI API, SQLAlchemy, SQLite, Docker, AWS, GitHub Actions",
-    github: "https://github.com/colecodesdev/code-challenge-generator",
-    focus: ["AI Integration", "Full-Stack Development", "CI/CD Automation"],
-    results: [
-      {
-        title:
-          "Built a full-stack AI application that generates programming challenges using the OpenAI API, with a React frontend and FastAPI backend deployed on AWS.",
-      },
-    ],
-    more: [
-      "Designed and implemented a React + Vite single-page application that allows users to generate programming challenges, answer multiple-choice questions, and review explanations within a consistent UI structure.",
-      "Developed a FastAPI backend that integrates with the OpenAI API to generate structured coding challenges, performs strict JSON validation on AI responses, and stores challenge history using SQLAlchemy with a SQLite database.",
-      "Deployed the frontend as a static site hosted in Amazon S3 and delivered through CloudFront, while routing /api requests to a containerized FastAPI backend running on EC2.",
-      "Implemented a CI/CD pipeline using GitHub Actions with OIDC authentication to build Docker images, push them to Amazon ECR, and automatically redeploy the backend container.",
-    ],
-    link: "https://d1tsfobuj7g5p2.cloudfront.net/",
-    image: codeChallengeGenerator,
-  },
-  {
     company: "Wild Olives 30A",
     year: "2024 - 2026",
     title: "Mediterranean Bistro Restaurant",
@@ -76,6 +53,29 @@ const portfolioProjects: PortfolioProject[] = [
     ],
     link: "https://d6uiwxps2u5ue.cloudfront.net/",
     image: wildOlives,
+  },
+  {
+    company: "Reilly Labs",
+    year: "2026",
+    title: "AI Code Challenge Generator",
+    techStack:
+      "React, Vite, FastAPI, OpenAI API, SQLAlchemy, SQLite, Docker, AWS, GitHub Actions",
+    github: "https://github.com/colecodesdev/code-challenge-generator",
+    focus: ["AI Integration", "Full-Stack Development", "CI/CD Automation"],
+    results: [
+      {
+        title:
+          "Built a full-stack AI application that generates programming challenges using the OpenAI API, with a React frontend and FastAPI backend deployed on AWS.",
+      },
+    ],
+    more: [
+      "Designed and implemented a React + Vite single-page application that allows users to generate programming challenges, answer multiple-choice questions, and review explanations within a consistent UI structure.",
+      "Developed a FastAPI backend that integrates with the OpenAI API to generate structured coding challenges, performs strict JSON validation on AI responses, and stores challenge history using SQLAlchemy with a SQLite database.",
+      "Deployed the frontend as a static site hosted in Amazon S3 and delivered through CloudFront, while routing /api requests to a containerized FastAPI backend running on EC2.",
+      "Implemented a CI/CD pipeline using GitHub Actions with OIDC authentication to build Docker images, push them to Amazon ECR, and automatically redeploy the backend container.",
+    ],
+    link: "https://d1tsfobuj7g5p2.cloudfront.net/",
+    image: codeChallengeGenerator,
   },
   {
     company: "LinkUp Solutions",
