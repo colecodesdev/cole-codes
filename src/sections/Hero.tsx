@@ -4,7 +4,7 @@ import ResumeIcon from "@/assets/icons/resume.svg";
 import grainImage from "@/assets/images/grain.jpg";
 import StarIcon from "@/assets/icons/star.svg";
 import SparkleIcon from "@/assets/icons/sparkle.svg";
-import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { HeroOrbit } from "@/components/HeroOrbit";
 
 const ctaBase =
@@ -12,7 +12,7 @@ const ctaBase =
 
 export const HeroSection = () => {
   return (
-    <div className="relative z-0 overflow-x-clip py-32 md:py-48 lg:py-60">
+    <div className="relative z-0 flex h-screen items-center justify-center overflow-hidden">
       <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
         <div
           className="absolute inset-0 -z-30 opacity-[0.035]"
@@ -79,29 +79,29 @@ export const HeroSection = () => {
             <div className="relative size-2.5 rounded-full bg-emerald-400">
               <div className="absolute inset-0 rounded-full bg-emerald-400 animate-ping-large"></div>
             </div>
-            <div className="text-sm font-medium text-white/90">Colton Reilly</div>
+            <div className="text-sm font-medium text-white/90">Building...</div>
           </div>
         </div>
 
         <div className="mx-auto max-w-3xl">
           <h1 className="mt-8 text-center font-serif text-3xl tracking-wide text-white md:text-5xl">
-            Software Engineering Graduate:<br /> Cloud &amp; Web Applications
+            Colton Reilly:<br /> Developer Portfolio
           </h1>
 
           <p className="mt-5 text-center text-white/70 md:text-lg md:leading-8">
-            I build and support production systems across web and cloud environments, combining technical execution with strong communication and practical problem solving.
+            In the process of rebuilding this, give me a day or two!<br/> In the meantime, check me out elsewhere online:
           </p>
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 md:flex-row">
           <a
-            href="https://github.com/colecodesdev/"
+            href="https://www.linkedin.com/in/colecodes/"
             target="_blank"
             rel="noopener noreferrer"
             className={`${ctaBase} z-10 bg-white/[0.03] text-white hover:bg-white/[0.06]`}
           >
-            <FaGithub className="size-4" />
-            <span>GitHub</span>
+            <FaLinkedin className="size-4" />
+            <span>LinkedIn</span>
           </a>
 
           <a
