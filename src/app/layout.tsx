@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Calistoga } from "next/font/google";
+import { Inter, Calistoga, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 
@@ -9,9 +9,13 @@ const calistoga = Calistoga({
   variable: "--font-serif",
   weight: ["400"],
 });
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 const SITE_URL = "https://colecodes.dev";
-const SITE_TITLE = "Cole Codes — Cole Reilly, Software Engineer";
+const SITE_TITLE = "Colton Reilly";
 const SITE_DESCRIPTION =
   "Portfolio of Cole Reilly: production web and AWS cloud engineering. Featured projects in React, FastAPI, Terraform, and Amazon ECS.";
 
@@ -62,6 +66,7 @@ export default function RootLayout({
         className={twMerge(
           inter.variable,
           calistoga.variable,
+          jetbrainsMono.variable,
           "bg-main text-main font-sans antialiased",
         )}
       >

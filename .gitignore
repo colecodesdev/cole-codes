@@ -40,3 +40,11 @@ next-env.d.ts
 
 
 *card.md
+
+# playwright mcp artifacts
+/.playwright-mcp/
+
+# root-level scratch screenshots
+/*.png
+/*.jpeg
+/*.jpg

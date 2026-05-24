@@ -11,7 +11,7 @@ export const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 mt-24 overflow-x-clip">
+    <footer className="relative z-10 mt-12 overflow-x-clip lg:mt-24">
       <div className="pointer-events-none absolute bottom-0 left-1/2 -z-10 h-[400px] w-[1600px] -translate-x-1/2 bg-emerald-300/12 [mask-image:radial-gradient(50%_50%_at_bottom_center,black,transparent)]"></div>
 
       <div className="container">
@@ -19,7 +19,7 @@ export const Footer = () => {
           <div className="flex flex-col items-center gap-1 md:items-start">
             <GradientText
               as="p"
-              className="text-sm font-semibold uppercase tracking-[0.3em]"
+              className="text-sm font-semibold uppercase tracking-widest"
             >
               Colton Reilly
             </GradientText>

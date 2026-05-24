@@ -42,6 +42,15 @@ const config: Config = {
           "Times New Roman",
           "serif",
         ],
+        mono: [
+          "var(--font-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Consolas",
+          "Liberation Mono",
+          "monospace",
+        ],
       },
       animation: {
         "ping-large": "ping-large 1s ease-in-out infinite",
