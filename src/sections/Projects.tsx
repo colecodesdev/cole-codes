@@ -18,7 +18,7 @@ type PortfolioProject = {
 
 const portfolioProjects: PortfolioProject[] = [
   {
-    company: "Mediterranean Restaurant Website",
+    company: "Restaurant Website",
     year: "2024",
     title: "Wild Olives 30A",
     techStack: "React, JavaScript, AWS S3, CloudFront",
@@ -152,7 +152,7 @@ export const ProjectsSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View ${project.title} on GitHub`}
-                      className="inline-flex size-9 items-center justify-center rounded-md text-white/70 transition hover:text-white md:size-7"
+                      className="inline-flex size-9 items-center justify-center rounded-md border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.06] hover:text-white md:size-8"
                     >
                       <GitHubIcon className="size-5 md:size-4" />
                     </a>
