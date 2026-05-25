@@ -29,7 +29,7 @@ const portfolioProjects: PortfolioProject[] = [
           "Restaurant site serving 45K+ unique visitors and driving 900+ phone conversions over 21 months.",
       },
     ],
-    link: "https://wildolives.com",
+    link: "https://wild-olives.vercel.app/",
     github: "https://github.com/colecodesdev/wild-olives",
   },
   {
